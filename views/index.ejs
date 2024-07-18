@@ -1,0 +1,63 @@
+<%- include("partials/header.ejs") %>
+
+
+
+<div class="main-landing-div">
+    <div>
+        <img class="landing" src="images/landing.jpg"/>
+    </div>
+    <div class="search-div">
+    <form method="post">
+<!-- <select name="books" class="form-select">
+  <option value="all">All</option>
+  <option value="title">Title</option>
+  <option value="author">Author</option>
+  <option value="subjects">Subjects</option>
+  <option value="lists">Lists</option> -->
+        <input type="search" name="search" class="search" placeholder="Search by Book name" required>
+        <button type="submit" class="form-submit">Search</button>
+       </form>
+    </div>
+   </div>
+
+<% if (books.length!==0 ){ %>
+    <h3 class="search-count">Search Results: <%= books.length %></h3>
+<div class="books-container">
+  <% for (let booklist of books) { %>  
+   <div class="book-details">
+    <img class="book-img" src=<%= booklist.cover_id? `https://covers.openlibrary.org/b/id/${booklist.cover_id}-L.jpg` :
+    "images/no-image.png" %> /> 
+        <a href="/bookdetail?id=<%= booklist.id %>" class="book-title" >  
+        <h3> <%= booklist.title %> </h3>    
+        </a>
+       <p class="book-author"> <strong>Author:</strong> <%= booklist.author %> </p>
+       <p class="book-editions"> <strong>Editions:</strong> <%= booklist.edition_count %> </p>
+       <p class="book-publish-year"> <strong>First Publish year:</strong> <%= booklist.first_publish_year %> </p> 
+   </div> 
+   <% }  %>
+</div>
+   <%    }  %>
+
+   <% if (errorMessage && books.length===0) { %>
+    <div class="error-div">
+        <h1 class="no-result"><%= errorMessage %></div>
+    </div>
+<% } %>
+   
+
+    
+
+
+<!-- <div class="books-container"> 
+<div class="book-details">
+ <img class="book-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReDkIU82Kawabq_TWT-_iO0aIE0WtMtOrRRUJS7DclGmJ5R74UUtR_pOM_HHz7fJbY1Vk&usqp=CAU"/>
+  <h3 class="book-title"> Harry Potter </h3>
+  <p class="book-author"> <strong>Author:</strong>  Jk Rollings </p>
+  <p class="book-editions"> <strong>Editions:</strong>  30 </p>
+  <p class="book-publish-year"> <strong>First Publish year:</strong>  1990 </p>
+
+</div>
+</div> -->
+
+
+<%- include("partials/footer.ejs") %>

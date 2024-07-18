@@ -1,0 +1,14 @@
+<%- include("partials/header.ejs") %>
+
+<div class="book-details-page">
+    <h1 class="book-title"><%= bookDetails.title %></h1>
+    <img class="book-img" src="<%= bookDetails.cover_img %>" alt="<%= bookDetails.title %>"/>
+    <p class="book-description"><strong>Description:</strong> <%= bookDetails.description %></p>
+    <p class="book-excerpt"><strong>Excerpts:</strong> <%= bookDetails.excerpt %></p>
+    <p class="book-subject-places"><strong>Subject Places:</strong> <%= bookDetails.subject_places %></p>
+    <p class="book-subject-times"><strong>Subject Times:</strong> <%= bookDetails.subject_times %></p>
+    <p class="book-subjects"><strong>Subjects:</strong> <%= bookDetails.subjects %></p>
+    <p class="book-people"><strong>Subjects People:</strong> <%= bookDetails.people %></p>
+    <a href="<%= bookDetails.url %>" class="book-link"> <strong> Url:  </strong><%= bookDetails.url %> </a>
+    <p class="book-modified"><strong>Last Modified:</strong> <%= bookDetails.last_modified %></p>
+</div>
